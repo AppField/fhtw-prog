@@ -39,7 +39,11 @@ public class Event {
     }
 
     public Date getDate() {
-        return new Date(date);
+        if (date == null) {
+            return null;
+        } else {
+            return new Date(date);
+        }
     }
 
     public void setDate(Date date) {
