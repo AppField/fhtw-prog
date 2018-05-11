@@ -18,6 +18,14 @@ public class Event {
         this.date = null;
     }
 
+    public Event(Event event) {
+        this.artist = new Artist(event.artist);
+        this.description = event.description;
+        this.attendees = event.attendees;
+        this.venue = new Venue(event.venue);
+        this.date = new Date(event.date);
+    }
+
     public Artist getArtist() {
         return artist;
     }
@@ -73,4 +81,21 @@ public class Event {
         this.venue = venue;
     }
 
+    public int impact() {
+        return this.attendees * 2;
+    }
+
+
+    public String toString() {
+//        String artist = this.artist.getName();
+        String artist = this.artist.toString();
+        String venueName = this.venue != null ? this.venue.getName() : "unknown";
+        String date =  this.getDate() != null ? this.getDate().toString() : null;
+        String description = this.getDescription();
+
+        int attendees = this.attendees;
+        int impact = this.impact();
+
+        return String.format("%s @ %s on %s\n%s\n(%d attending (%d))", artist, venueName, date, description, attendees, impact);
+    }
 }

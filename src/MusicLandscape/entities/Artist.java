@@ -28,4 +28,8 @@ public class Artist {
             }
         }
     }
+
+    public String toString() {
+        return (this.name == null) ? "unknown" : this.name;
+    }
 }

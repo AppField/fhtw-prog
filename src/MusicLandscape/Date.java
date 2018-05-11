@@ -2,7 +2,7 @@
 //		
 //       git.rev = 222
 //  git.revision = 5606f8db8c00d9e1a60936282607a4f156a2c7c2
-//         stage = ES02
+//         stage = ES03
 //
 // ***************************************************
 package MusicLandscape;
@@ -15,7 +15,7 @@ import java.util.Scanner;
  * @author JS
  *
  */
-public class Date implements  java.lang.Comparable<Date>
+public class Date implements  Comparable<Date>
 
 
 {

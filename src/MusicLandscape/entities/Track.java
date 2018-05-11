@@ -88,7 +88,7 @@ public class Track {
         return this.getWriter() != null && this.getWriter().getName() != null;
     }
 
-    public String getString() {
+    public String toString() {
 
         String title = String.format("%10.10s", this.title != null ? this.title : "unknown");
         String writer = String.format("%10.10s", this.writerIsKnown() ? this.writer.getName() : "unknown");
