@@ -1,8 +1,5 @@
 package MusicLandscape.entities;
-
 import MusicLandscape.util.ConsoleScanable;
-import bwi.prog.utils.TextIO;
-
 import java.util.Scanner;
 
 public class Track implements ConsoleScanable {
