@@ -1,6 +1,11 @@
 package MusicLandscape.entities;
 
-public class Track {
+import MusicLandscape.util.ConsoleScanable;
+import bwi.prog.utils.TextIO;
+
+import java.util.Scanner;
+
+public class Track implements ConsoleScanable {
 
     private int duration;
     private Artist performer;
@@ -99,4 +104,47 @@ public class Track {
         return String.format("%10s by %s performed by %s (%02d:%02d)", title, writer, performer, min, sec);
     }
 
+
+    @Override
+    public boolean scan() {
+        boolean changed = false;
+        Scanner sc = new Scanner(System.in);
+
+        if (scanTitle(sc)) changed = true;
+        if (scanDuration(sc)) changed = true;
+
+        sc.close();
+        return changed;
+    }
+
+    private boolean scanDuration(Scanner sc) {
+        String input;
+        do {
+            System.out.printf("Current duration: %d\n", this.duration);
+            System.out.printf("Enter duration (leave empty to keep): ");
+            input = sc.nextLine();
+
+            if (!input.isEmpty()) {
+                if (input.matches("\\d+")) {
+                    setDuration(Integer.parseInt(input));
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        } while (true);
+    }
+
+    private boolean scanTitle(Scanner sc) {
+        System.out.printf("Current Title: %s\n", this.title);
+        System.out.printf("Enter title: (leave empty to keep): ");
+        String input = sc.nextLine();
+
+        if (!input.isEmpty()) {
+            setTitle(input);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
