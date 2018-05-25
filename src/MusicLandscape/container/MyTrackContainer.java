@@ -32,12 +32,9 @@ public class MyTrackContainer {
     }
 
     public void sort(Comparator<Track> theComp, boolean asc) {
-        this.selection.sort(new Comparator<Track>() {
-            @Override
-            public int compare(Track track, Track t1) {
-                return track.getTitle().compareTo(t1.getTitle());
-            }
-        });
+        java.util.Comparator<Track> usedComp = theComp;
+        if (!asc) usedComp = theComp.reversed();
+        selection.sort(usedComp);
     }
 
     public int filter(MyMatcher<Track> matcher) {
@@ -79,7 +76,7 @@ public class MyTrackContainer {
     }
 
     public Track[] selection() {
-        return this.selection.toArray(new Track[this.selection.size()]);
+        return this.selection.toArray(new Track[0]);
     }
 
     public boolean add(Track track) {
